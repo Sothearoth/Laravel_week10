@@ -30,8 +30,15 @@ class ProductController extends Controller
         return redirect(route('products.index'));
 
     }
-    public function show(Product $product){
-        return view('products.show',['product'=>$product]);
+    public function show(ProductRequest $request, Product $product){
+      $product->name = $request->get('name');
+      $product->unit_price = $request->get('unit_price');
+      $product->categorie_id = $request->get('categorie_id');
+      $product->qty_in_stock = $request->get('qty_in_stock');
+      $product->save();
+
+         return view('products.show',['product'=>$product]);
+        //return redirect(route('products.index'));
     }
 
     public function edit(Product $product){
@@ -46,4 +53,5 @@ class ProductController extends Controller
     public function destroy(Product $product){
         return view('products.index',['product'=>$product]);
     }
+
 }

@@ -9,10 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    public $fillable = ['categorie_id','name','unit_price','qty_stock'];
+    public $fillable = ['categorie_id','name','unit_price','qty_in_stock'];
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'categorie_id');
     }
 }
 

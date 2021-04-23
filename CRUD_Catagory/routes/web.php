@@ -33,7 +33,7 @@ Route::get('/blog-single',[PageController::class,"blog_single"]);
 Route::get('/contact',[PageController::class,"contact"]); 
 Route::get('/index',[ProductController::class,"index"]); 
  
-Route::get('/view.products.create',[ProductController::class,"create"]); 
+//Route::get('/view.products.create',[ProductController::class,"create"]); 
 Route::resource('products', App\Http\Controllers\ProductController::class);
 
 

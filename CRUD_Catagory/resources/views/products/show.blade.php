@@ -20,9 +20,9 @@
     </thead>
     <tbody>
   
-    @foreach($products as $product)
+   
     <tr>
-    <td>{{ $loop->index + 1 }}</td>
+    <td>{{$product->id }}</td>
     <td>{{ $product->category->name }}</td>
     <td>{{ $product->name }}</td>
     <td>{{ $product->unit_price }}</td>
@@ -31,7 +31,7 @@
           <a href="{{route('products.edit',$product)}}">Edit</a>| Delete <a href=""></a>
     </td>
     </tr>
-    @endforeach
+   
     </tbody>
  </table>
 
