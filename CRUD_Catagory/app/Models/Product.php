@@ -12,7 +12,7 @@ class Product extends Model
     public $fillable = ['categorie_id','name','unit_price','qty_stock'];
 
     public function category(){
-        return $this->belongTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }
 

@@ -23,10 +23,10 @@ class ProductController extends Controller
     }
     // store product
 
-    public function store(ProductRequest $product){
+    public function store(Request $request){
         
         // if success will redirect to route index
-
+        Product :: create($request->all());
         return redirect(route('products.index'));
 
     }

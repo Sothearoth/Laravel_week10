@@ -20,6 +20,7 @@ Route::get('/aboutUs',[PageController::class,"aboutUs"] );
 Route::get('/app', function () {
     return view('layouts.app');
 });
+
 Route::get('/team',[PageController::class,"team"]);
 
 Route::get('/testimonials',[PageController::class,"testimonials"]);
@@ -31,6 +32,8 @@ Route::get('/blog-single',[PageController::class,"blog_single"]);
 
 Route::get('/contact',[PageController::class,"contact"]); 
 Route::get('/index',[ProductController::class,"index"]); 
-
+ 
+Route::get('/view.products.create',[ProductController::class,"create"]); 
+Route::resource('products', App\Http\Controllers\ProductController::class);
 
 

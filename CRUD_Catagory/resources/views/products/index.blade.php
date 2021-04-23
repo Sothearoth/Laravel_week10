@@ -1,4 +1,4 @@
-@extends('products.create')
+@extends('layouts.app')
 
 @section('content')
 
@@ -14,7 +14,7 @@
         <th>Unit Price</th>
         <th>Quantity in stock</th>
         <th>
-            <a class = "btn btn-primary"href="/">+ New</a>
+            <a class = "btn btn-primary"href="/view.products.create">+ New</a>
         </th>
     </tr>
     </thead>
