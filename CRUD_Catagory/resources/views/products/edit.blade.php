@@ -4,8 +4,10 @@
   <div class="col-lg-8 col-md-10 mx-auto">
     <p>Edit Product</p>
 
-    <form action="{{ route('products.update',$product) }}" method="PUT">
+    <form action="{{ route('products.update',$product) }}" >
       @csrf
+      @method('PUT')
+
       <div class="control-group">
         <div class="form-group floating-label-form-group controls">
           <label>Category</label>
