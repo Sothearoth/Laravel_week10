@@ -14,5 +14,12 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class,'categorie_id');
     }
+
+    public static $rules = [
+        'categorie_id'=>'required',
+        'name'=>'required',
+        'unit_price'=>'required|numeric',
+        'qty_in_stock'=>'required|numeric'
+    ];
 }
 

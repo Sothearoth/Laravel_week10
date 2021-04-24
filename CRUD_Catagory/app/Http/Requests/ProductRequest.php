@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\Models\Product;
 class ProductRequest extends FormRequest
 {
     /**
@@ -23,8 +23,6 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return Product::$rules;
     }
 }

@@ -23,20 +23,15 @@ class ProductController extends Controller
     }
     // store product
 
-    public function store(Request $request){
+    public function store(ProductRequest $request){
         
         // if success will redirect to route index
         Product :: create($request->all());
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('success',$request->get('name').' is created successfully');
 
     }
-    public function show(ProductRequest $request, Product $product){
-      $product->name = $request->get('name');
-      $product->unit_price = $request->get('unit_price');
-      $product->categorie_id = $request->get('categorie_id');
-      $product->qty_in_stock = $request->get('qty_in_stock');
-      $product->save();
-
+    public function show( Product $product){
+        
          return view('products.show',['product'=>$product]);
         //return redirect(route('products.index'));
     }
@@ -46,12 +41,14 @@ class ProductController extends Controller
         return view('products.edit',['product'=>$product],['categories'=>$categories]);
     }
 
-    public function update(Product $product){
-        return view('products.index',['product'=>$product]);
+    public function update(ProductRequest $request,Product $product ){
+        $product->update($request->all());
+        return redirect(route('products.index'))->with('success',$product->name.' is updated successfully');
     }
 
     public function destroy(Product $product){
-        return view('products.index',['product'=>$product]);
+        $product->delete();
+        return redirect(route('products.index'))->with('success',$product->name.' is deleted');
     }
 
 }

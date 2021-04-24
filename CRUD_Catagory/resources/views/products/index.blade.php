@@ -1,10 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+<section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-<div class="col-lg-8 col-md-10 mx-auto">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>New Product</h2>
+          <ol>
+            <li><a href="app">Home</a></li>
+            <li>Product</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+<div class="col-lg-8 col-md-10 mx-auto mt-3 mb-3">
     <h1> Products</h1>
-
+    @if(Session::has('success'))
+    <p class="text-success">{{Session::get('success')}}</p>
+    
+    @endif
+   
     <table class = "table table-border">
     <thead>
     <tr>
@@ -28,8 +44,15 @@
     <td>{{ $product->unit_price }}</td>
      <td>{{ $product->qty_in_stock }}</td>
      <td>
-          <a href="{{route('products.edit',$product)}}">Edit</a>| Delete <a href=""></a>
+          
+          <form action="{{route('products.destroy',$product)}}" method="POST" >
+          <a href="{{route('products.edit',$product)}}" class="btn btn-primary">Edit</a>
+            <input type="submit" value="delete" class="btn btn-danger">
+            @csrf
+            @method("delete")
+          </form>
     </td>
+
     </tr>
     @endforeach
     </tbody>

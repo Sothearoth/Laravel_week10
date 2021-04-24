@@ -1,8 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-<div class="col-lg-8 col-md-10 mx-auto">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>New Product</h2>
+          <ol>
+            <li><a href="app">Home</a></li>
+            <li>Product</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+<div class="col-lg-8 col-md-10 mx-auto mt-3 mb-3">
     <h1> Products</h1>
 
     <table class = "table table-border">

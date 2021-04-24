@@ -23,17 +23,15 @@ Route::get('/app', function () {
 
 Route::get('/team',[PageController::class,"team"]);
 
-Route::get('/testimonials',[PageController::class,"testimonials"]);
-Route::get('/services',[PageController::class,"services"]); 
-Route::get('/portfolio',[PageController::class,"portfolio"]); 
-Route::get('/pricing',[PageController::class,"pricing"]); 
-Route::get('/blog', [PageController::class,"blog"]); 
-Route::get('/blog-single',[PageController::class,"blog_single"]); 
+Route::get('/testimonials',[PageController::class,"testimonials"])->name('testimonials');
+Route::get('/services',[PageController::class,"services"])->name('services');
+Route::get('/portfolio',[PageController::class,"portfolio"])->name('portfolio');
+Route::get('/pricing',[PageController::class,"pricing"])->name('pricing');
+Route::get('/blog', [PageController::class,"blog"])->name('blog'); 
+Route::get('/blog-single',[PageController::class,"blog_single"])->name('blog_single'); 
 
-Route::get('/contact',[PageController::class,"contact"]); 
-Route::get('/index',[ProductController::class,"index"]); 
- 
-//Route::get('/view.products.create',[ProductController::class,"create"]); 
+Route::get('/contact',[PageController::class,"contact"])->name('contact'); 
+
+Auth::routes();
 Route::resource('products', App\Http\Controllers\ProductController::class);
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

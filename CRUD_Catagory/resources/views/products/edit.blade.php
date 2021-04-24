@@ -1,10 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="col-lg-8 col-md-10 mx-auto">
+<section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>New Product</h2>
+          <ol>
+            <li><a href="app">Home</a></li>
+            <li>Product</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+  <div class="col-lg-8 col-md-10 mx-auto mt-3 mb-3">
     <p>Edit Product</p>
 
-    <form action="{{ route('products.update',$product) }}" >
+    <form action="{{ route('products.update',$product) }}" method="POST">
       @csrf
       @method('PUT')
 
@@ -36,7 +49,7 @@
       <div class="control-group">
         <div class="form-group floating-label-form-group controls">
           <label>Unit Price</label>
-          <input type="text" class="form-control" value="{{$product->unit_price}}" name="unit_price" required >
+          <input type="number" class="form-control" value="{{$product->unit_price}}" name="unit_price" required >
           <p class="help-block text-danger"></p>
         </div>
       </div>
