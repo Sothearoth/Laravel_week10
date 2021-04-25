@@ -20,7 +20,7 @@
     <form action="{{ route('products.update',$product) }}" method="POST">
       @csrf
       @method('PUT')
-
+      <input type="hidden" value="{{Auth::user()->id}}" name="owner_id">
       <div class="control-group">
         <div class="form-group floating-label-form-group controls">
           <label>Category</label>

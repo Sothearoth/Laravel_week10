@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -37,16 +38,25 @@ class ProductController extends Controller
     }
 
     public function edit(Product $product){
+        if(Auth::user()->cannot('edit',$product)){
+            abort(403);
+        }
         $categories = Category::get();
         return view('products.edit',['product'=>$product],['categories'=>$categories]);
     }
 
     public function update(ProductRequest $request,Product $product ){
+        if(Auth::user()->cannot('edit',$product)){
+            abort(403);
+        }
         $product->update($request->all());
         return redirect(route('products.index'))->with('success',$product->name.' is updated successfully');
     }
 
     public function destroy(Product $product){
+        if(Auth::user()->cannot('delete',$product)){
+            abort(403);
+        }
         $product->delete();
         return redirect(route('products.index'))->with('success',$product->name.' is deleted');
     }

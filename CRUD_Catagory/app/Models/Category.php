@@ -10,4 +10,6 @@ class Category extends Model
     use HasFactory;
 
     public $fillable = ['name'];
+
+    public static $rules =  [ 'name'=>'required',]; 
 }

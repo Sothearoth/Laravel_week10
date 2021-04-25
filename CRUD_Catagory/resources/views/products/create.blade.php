@@ -19,6 +19,8 @@
 
     <form action="{{ route('products.store') }}" method="POST">
       @csrf
+     
+      <input type="hidden" value="{{Auth::user()->id}}" name="owner_id">
       <div class="control-group">
         <div class="form-group floating-label-form-group controls">
           <label>Category</label>

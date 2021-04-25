@@ -73,8 +73,34 @@
           <li><a href="{{route('pricing')}}">Pricing</a></li>
           <li><a href="{{route('blog')}}">Blog</a></li>
           <li><a href="{{route('contact')}}">Contact</a></li>
-          <li><a href="{{route('products.index')}}">Product</a></li>
+         
           
+          @guest
+            @if(Route::has('login'))
+            <li><a href="{{route('login')}}">Login</a></li>
+            @endif
+
+            @if(Route::has('register'))
+            <li><a href="{{route('register')}}">Register</a></li>
+            @endif
+            @else
+            @can('CategoryCrud')
+            <li><a href="{{route('categories.index')}}">Category</a></li>
+            @endcan
+            <li><a href="{{route('products.index')}}">Product</a></li>
+            <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li>
+              <form action="{{route('logout')}}" method="POST">
+              @csrf
+              <input type="submit" value="logout">
+              </form>
+              
+              </li>
+            </ul>
+          </li>
+
+          @endguest
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
